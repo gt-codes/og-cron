@@ -1,6 +1,6 @@
 {
 	"functions": {
-		"pages/api/cron.js": {
+		"src/pages/api/cron.js": {
 			"cron": "*/10 * * * *"
 		}
 	}

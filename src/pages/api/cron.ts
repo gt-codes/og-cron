@@ -1,5 +1,5 @@
 import { updateTopStories } from 'lib/upstash';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export const config = {
 	runtime: 'edge',
@@ -18,7 +18,7 @@ const getHNItem = async (item: string) => {
 	return data;
 };
 
-export default async function handler(req: NextRequest) {
+export default async function handler() {
 	try {
 		const hackerNewsData = await getHackerNews();
 
