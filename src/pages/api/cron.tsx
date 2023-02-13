@@ -1,3 +1,4 @@
+import { updateTopStories } from 'lib/upstash';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const config = {
@@ -17,8 +18,30 @@ const getHNItem = async (item: string) => {
 	return data;
 };
 
-export default function handler(req: NextRequest) {
-	return NextResponse.json({
-		name: `Hello, from ${req.url} I'm now an Edge Function!`,
-	});
+export default async function handler(req: NextRequest) {
+	try {
+		const hackerNewsData = await getHackerNews();
+
+		updateTopStories(
+			hackerNewsData.map((item) => ({
+				id: item.id,
+				by: item.by,
+				url: item.url,
+				time: item.time,
+				title: item.title,
+				score: item.score,
+			}))
+		);
+
+		return NextResponse.json({
+			name: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
+				.map((item) => item.id)
+				.join(', ')} `,
+		});
+	} catch (error: any) {
+		console.log({ error });
+		return NextResponse.json({
+			error: error.message,
+		});
+	}
 }
