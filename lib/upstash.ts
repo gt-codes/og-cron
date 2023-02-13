@@ -18,3 +18,7 @@ export const updateTopStories = async (topStories: TopStory[]) => {
 	await redis.del('top-stories');
 	await Promise.all(topStories.map((story) => redis.rpush('top-stories', story)));
 };
+
+export const getTopStories = async (): Promise<TopStory[]> => {
+	return redis.lrange('top-stories', 0, 2);
+};
