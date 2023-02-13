@@ -22,9 +22,9 @@ export default async function handler(req: NextRequest) {
 					</div>
 					<div tw='flex justify-center items-center w-1/2 h-full'>
 						<div tw='flex flex-col px-6'>
-							{hackerNewsData.map((item: any) => {
+							{hackerNewsData.map((item) => {
 								return (
-									<div tw='flex flex-col mb-4'>
+									<div key={item.id} tw='flex flex-col mb-4'>
 										<h1 tw='text-3xl font-bold'>{item.title}</h1>
 										<p tw='text-xl mt-2 text-[#858585]'>
 											{item.score} points by {item.by}
