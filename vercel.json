@@ -1,0 +1,7 @@
+{
+	"functions": {
+		"pages/api/cron.js": {
+			"cron": "0 5 * * *"
+		}
+	}
+}
