@@ -13,11 +13,12 @@ export default async function handler(req: NextRequest) {
 		return new ImageResponse(
 			(
 				<div tw='bg-[#F6F6F0] text-black h-full w-full flex items-center justify-center'>
-					<div tw='flex justify-center items-center w-1/2 h-full'>
+					<div tw='flex flex-col justify-center items-center w-1/2 h-full'>
 						<img
 							src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Y_Combinator_logo.svg/512px-Y_Combinator_logo.svg.png?20161016225220'
 							tw='h-32 w-32'
 						/>
+						<p tw='text-xl'>Top Stories</p>
 					</div>
 					<div tw='flex justify-center items-center w-1/2 h-full'>
 						<div tw='flex flex-col px-6'>
