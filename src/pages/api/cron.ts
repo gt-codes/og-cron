@@ -33,6 +33,11 @@ export default async function handler() {
 			}))
 		);
 
+		console.log({
+			name: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
+				.map((item) => item.id)
+				.join(', ')} `,
+		});
 		return NextResponse.json({
 			name: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
 				.map((item) => item.id)
