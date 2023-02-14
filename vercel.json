@@ -1,7 +1,7 @@
 {
 	"functions": {
 		"src/pages/api/cron.ts": {
-			"cron": "*/10 * * * *"
+			"cron": "* * * * *"
 		}
 	}
 }
