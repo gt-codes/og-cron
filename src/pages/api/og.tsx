@@ -1,5 +1,5 @@
 import { ImageResponse } from '@vercel/og';
-import { getTopStories } from 'lib/upstash';
+import { getLastUpdated, getTopStories } from 'lib/upstash';
 import { NextRequest } from 'next/server';
 
 export const config = {
@@ -9,6 +9,17 @@ export const config = {
 export default async function handler(req: NextRequest) {
 	try {
 		const hackerNewsData = await getTopStories();
+		let lastUpdated = await getLastUpdated();
+
+		const date = new Date(lastUpdated);
+		lastUpdated = date.toLocaleString('en-US', {
+			timeZone: 'America/Los_Angeles',
+			month: 'long',
+			day: 'numeric',
+			year: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+		});
 
 		return new ImageResponse(
 			(
@@ -19,6 +30,7 @@ export default async function handler(req: NextRequest) {
 							tw='h-32 w-32'
 						/>
 						<p tw='text-xl'>Top Stories</p>
+						<p tw='text-lg -mt-4 text-[#828282]'>As of {lastUpdated} (PST)</p>
 					</div>
 					<div tw='flex justify-center items-center w-1/2 h-full'>
 						<div tw='flex flex-col px-6'>
