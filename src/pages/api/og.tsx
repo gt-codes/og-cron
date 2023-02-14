@@ -21,6 +21,7 @@ export default async function handler(req: NextRequest) {
 			minute: 'numeric',
 		});
 
+		console.log({ lastUpdated, hackerNewsData });
 		return new ImageResponse(
 			(
 				<div tw='bg-[#F6F6F0] text-black h-full w-full flex items-center justify-center'>
