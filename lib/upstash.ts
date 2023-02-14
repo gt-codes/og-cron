@@ -15,8 +15,8 @@ type TopStory = {
 };
 
 export const updateTopStories = async (topStories: TopStory[]) => {
-	await redis.del('top-stories');
-	await Promise.all(topStories.map((story) => redis.rpush('top-stories', story)));
+	await redis.ltrim('top-stories', 1, 0);
+	await Promise.all(topStories.map((story) => redis.lpush('top-stories', story)));
 	await redis.set('last-updated', new Date().toISOString());
 };
 
