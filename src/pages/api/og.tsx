@@ -1,17 +1,23 @@
 import { ImageResponse } from '@vercel/og';
-import { getLastUpdated, getTopStories } from 'lib/upstash';
 import { NextRequest } from 'next/server';
+import { getAll } from '@vercel/edge-config';
+import { TopStory } from 'lib/types';
 
 export const config = {
 	runtime: 'edge',
 };
 
+type EdgeConfigData = {
+	lastUpdated: string;
+	topStories: TopStory[];
+};
+
 export default async function handler(req: NextRequest) {
 	try {
-		const hackerNewsData = await getTopStories();
-		let lastUpdated = await getLastUpdated();
+		let { lastUpdated, topStories } = (await getAll<EdgeConfigData>(['lastUpdated', 'topStories']))!;
 
 		const date = new Date(lastUpdated);
+
 		lastUpdated = date.toLocaleString('en-US', {
 			timeZone: 'America/Los_Angeles',
 			month: 'long',
@@ -21,7 +27,6 @@ export default async function handler(req: NextRequest) {
 			minute: 'numeric',
 		});
 
-		console.log({ lastUpdated, hackerNewsData });
 		return new ImageResponse(
 			(
 				<div tw='bg-[#F6F6F0] text-black h-full w-full flex items-center justify-center'>
@@ -35,7 +40,7 @@ export default async function handler(req: NextRequest) {
 					</div>
 					<div tw='flex justify-center items-center w-1/2 h-full'>
 						<div tw='flex flex-col px-6'>
-							{hackerNewsData.map((item) => {
+							{topStories.map((item) => {
 								return (
 									<div key={item.id} tw='flex flex-col mb-4'>
 										<h1 tw='text-3xl font-bold'>{item.title}</h1>

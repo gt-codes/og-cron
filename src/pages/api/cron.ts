@@ -1,4 +1,4 @@
-import { updateTopStories } from 'lib/upstash';
+import { updateTopStories } from 'lib/edge-config';
 import { NextResponse } from 'next/server';
 
 export const config = {
@@ -8,14 +8,12 @@ export const config = {
 const getHackerNews = async () => {
 	const res = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
 	const data = await res.json();
-	const topStories = await Promise.all(data.slice(0, 3).map((item: string) => getHNItem(item)));
-	return topStories;
+	return await Promise.all(data.slice(0, 3).map((item: string) => getHNItem(item)));
 };
 
 const getHNItem = async (item: string) => {
 	const res = await fetch(`https://hacker-news.firebaseio.com/v0/item/${item}.json`);
-	const data = await res.json();
-	return data;
+	return await res.json();
 };
 
 export default async function handler() {
@@ -34,12 +32,12 @@ export default async function handler() {
 		);
 
 		console.log({
-			name: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
+			res: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
 				.map((item) => item.id)
 				.join(', ')} `,
 		});
 		return NextResponse.json({
-			name: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
+			res: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
 				.map((item) => item.id)
 				.join(', ')} `,
 		});
