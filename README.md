@@ -29,6 +29,6 @@ npm run dev
 
 ## Deploy your own
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or view the demo [here](https://nextconf-images.vercel.app/)
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or view the demo [here](https://cron.vercel.zone/)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/gt-codes/og-cron&project-name=og-cron&repository-name=og-cron&env=VERCEL_TEAM_ID,VERCEL_ACCESS_TOKEN&envDescription=API%20Keys%20from%20your%20Vercel%20account%20needed%20to%20run%20this%20application.)
