@@ -17,8 +17,8 @@ This Next.js template automatically fetches the top stories from Hacker News eve
 -   > At this step, you should already have the `EDGE_CONFIG_URL` environment variable. Just add the `EDGE_CONFIG_ID` as well.
 
 3. Set environment variables:
-    - `VERCEL_TEAM_ID`: The Vercel Team ID you created the Edge Config store under
-    - `VERCEL_ACCESS_TOKEN`: Your Vercel Personal Access Token scoped to your appropriate Vercel Team
+    - `VC_TEAM_ID`: The Vercel Team ID you created the Edge Config store under
+    - `VC_ACCESS_TOKEN`: Your Vercel Personal Access Token scoped to your appropriate Vercel Team
 
 ## Start the development server
 
@@ -31,4 +31,4 @@ npm run dev
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or view the demo [here](https://cron.vercel.zone/)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/gt-codes/og-cron&project-name=og-cron&repository-name=og-cron&env=VERCEL_TEAM_ID,VERCEL_ACCESS_TOKEN&envDescription=API%20Keys%20from%20your%20Vercel%20account%20needed%20to%20run%20this%20application.)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/gt-codes/og-cron&project-name=og-cron&repository-name=og-cron&env=VC_TEAM_ID,VC_ACCESS_TOKEN&envDescription=API%20Keys%20from%20your%20Vercel%20account%20needed%20to%20run%20this%20application.)
