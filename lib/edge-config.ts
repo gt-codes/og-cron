@@ -1,7 +1,7 @@
 import { TopStory } from './types';
 
 export const updateTopStories = async (topStories: TopStory[]) => {
-	await fetch(
+	const res = await fetch(
 		`https://api.vercel.com/v1/edge-config/${process.env.EDGE_CONFIG_ID}/items?teamId=${process.env.VERCEL_TEAM_ID}`,
 		{
 			method: 'PATCH',
@@ -25,4 +25,6 @@ export const updateTopStories = async (topStories: TopStory[]) => {
 			}),
 		}
 	);
+
+	return await res.json();
 };

@@ -20,7 +20,7 @@ export default async function handler() {
 	try {
 		const hackerNewsData = await getHackerNews();
 
-		await updateTopStories(
+		const res = await updateTopStories(
 			hackerNewsData.map((item) => ({
 				id: item.id,
 				by: item.by,
@@ -32,12 +32,13 @@ export default async function handler() {
 		);
 
 		console.log({
-			res: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
+			res,
+			data: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
 				.map((item) => item.id)
 				.join(', ')} `,
 		});
 		return NextResponse.json({
-			res: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
+			data: `Updated top stories at ${new Date().toISOString()}. Ids: ${hackerNewsData
 				.map((item) => item.id)
 				.join(', ')} `,
 		});
