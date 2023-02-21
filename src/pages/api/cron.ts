@@ -22,7 +22,7 @@ export default async function handler() {
 	try {
 		const hackerNewsData = await getHackerNews();
 
-		updateTopStories(
+		await updateTopStories(
 			hackerNewsData.map((item) => ({
 				id: item.id,
 				by: item.by,
