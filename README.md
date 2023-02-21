@@ -1,38 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Cron OG 
 
-## Getting Started
+This Next.js template automatically fetches the top stories from Hacker News every minute and stores them in [Vercel Edge Config](https://vercel.com/docs/concepts/edge-network/edge-config), a key-value data store. This template uses [Vercel OG](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) to generate an Open Graph (OG) image at the edge, leveraging Edge Config for efficient data storage and retrieval.
 
-First, run the development server:
+## Features
+- Automatic fetching of top stories from Hacker News
+- **Vercel Edge Config** as a data store for efficient data storage and retrieval
+- **Vercel OG** for automatic generation of Open Graph (OG) image at the edge
+- Updates to Hacker News data every minute thanks to **Vercel Cron Jobs**
 
+## Usage
+1. Clone the repository: `git clone https://github.com/gt-codes/og-cron.git`
+2. Follow [these steps](https://vercel.com/docs/concepts/edge-network/edge-config/get-started#create-an-edge-config-in-your-account) to configure your Edge Config store
+- > At this step, you should already have the `EDGE_CONFIG_URL` environment variable. Just add the `EDGE_CONFIG_ID` as well.
+3. Set environment variables:
+	- `VERCEL_TEAM_ID`: The Vercel Team ID you created the Edge Config store under
+	- `VERCEL_ACCESS_TOKEN`: Your Vercel Personal Access Token scoped to your appropriate Vercel Team
+
+
+## Start the development server
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy your own
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or view the demo [here](https://nextconf-images.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/gt-codes/og-cron&project-name=og-cron&repository-name=og-cron&env=VERCEL_TEAM_ID,VERCEL_ACCESS_TOKEN,&envDescription=API%20Keys%20from%20your%20Vercel%20account%20needed%20to%20run%20this%20application.)
