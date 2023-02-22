@@ -15,8 +15,6 @@ This Next.js template automatically fetches the top stories from Hacker News eve
 2. Copy the `.env.example` file in this directory to `.env.local`
     - `UPSTASH_REDIS_REST_URL`: The REST URL for your Upstash Redis instance
     - `UPSTASH_REDIS_REST_TOKEN`: The REST token for your Upstash Redis instance
-    - `VC_TEAM_ID`: The Vercel Team ID you created the Edge Config store under
-    - `VC_ACCESS_TOKEN`: Your Vercel Personal Access Token scoped to your appropriate Vercel Team
 
 ## Start the development server
 
@@ -29,4 +27,4 @@ npm run dev
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or view the demo [here](https://cron.vercel.zone/)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/gt-codes/og-cron&project-name=og-cron&repository-name=og-cron&env=VC_TEAM_ID,VC_ACCESS_TOKEN&integration-ids=oac_V3R1GIpkoJorr6fqyiwdhl17&envDescription=API%20Keys%20from%20your%20Vercel%20account%20needed%20to%20run%20this%20application.)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/gt-codes/og-cron&project-name=og-cron&repository-name=og-cron&integration-ids=oac_V3R1GIpkoJorr6fqyiwdhl17&envDescription=API%20Keys%20from%20your%20Vercel%20account%20needed%20to%20run%20this%20application.)
