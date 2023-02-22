@@ -1,4 +1,4 @@
-import { updateTopStories } from 'lib/edge-config';
+import { updateTopStories } from 'lib/upstash';
 import { NextResponse } from 'next/server';
 
 export const config = {

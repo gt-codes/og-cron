@@ -1,20 +1,14 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import { getAll } from '@vercel/edge-config';
-import { TopStory } from 'lib/types';
+import { getTopStories, getLastUpdated } from 'lib/upstash';
 
 export const config = {
 	runtime: 'edge',
 };
 
-type EdgeConfigData = {
-	lastUpdated: string;
-	topStories: TopStory[];
-};
-
 export default async function handler(req: NextRequest) {
 	try {
-		let { lastUpdated, topStories } = (await getAll<EdgeConfigData>(['lastUpdated', 'topStories']))!;
+		let [topStories, lastUpdated] = await Promise.all([getTopStories(), getLastUpdated()]);
 
 		const date = new Date(lastUpdated);
 
