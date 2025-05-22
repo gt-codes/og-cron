@@ -1,10 +1,6 @@
 import { updateTopStories } from 'lib/upstash';
 import { NextResponse } from 'next/server';
 
-export const config = {
-	runtime: 'edge',
-};
-
 const getHackerNews = async () => {
 	const res = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
 	const data = await res.json();
@@ -16,7 +12,7 @@ const getHNItem = async (item: string) => {
 	return await res.json();
 };
 
-export default async function handler() {
+export async function GET() {
 	try {
 		const hackerNewsData = await getHackerNews();
 
@@ -42,10 +38,15 @@ export default async function handler() {
 				.map((item) => item.id)
 				.join(', ')} `,
 		});
-	} catch (error: any) {
+	} catch (error: unknown) {
 		console.log({ error });
+		if (error instanceof Error) {
+			return NextResponse.json({
+				error: error.message,
+			});
+		}
 		return NextResponse.json({
-			error: error.message,
+			error: 'An unknown error occurred',
 		});
 	}
 }

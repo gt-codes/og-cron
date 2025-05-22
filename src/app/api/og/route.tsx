@@ -1,12 +1,7 @@
-import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
+import { ImageResponse } from 'next/og';
 import { getTopStories, getLastUpdated } from 'lib/upstash';
 
-export const config = {
-	runtime: 'edge',
-};
-
-export default async function handler(req: NextRequest) {
+export async function GET() {
 	try {
 		let [topStories, lastUpdated] = await Promise.all([getTopStories(), getLastUpdated()]);
 
@@ -25,9 +20,11 @@ export default async function handler(req: NextRequest) {
 			(
 				<div tw='bg-[#F6F6F0] text-black h-full w-full flex items-center justify-center'>
 					<div tw='flex flex-col justify-center items-center w-1/2 h-full'>
+						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Y_Combinator_logo.svg/512px-Y_Combinator_logo.svg.png?20161016225220'
 							tw='h-32 w-32'
+							alt='Y Combinator Logo'
 						/>
 						<p tw='text-xl'>Top Stories</p>
 						<p tw='text-lg -mt-4 text-[#828282]'>As of {lastUpdated} (PST)</p>
@@ -56,9 +53,9 @@ export default async function handler(req: NextRequest) {
 				},
 			}
 		);
-	} catch (e: any) {
-		console.log(`${e.message}`);
-		return new Response(`Failed to generate the image`, {
+	} catch (e: unknown) {
+		console.log(e instanceof Error ? e.message : 'Unknown error');
+		return new Response('Failed to generate the image', {
 			status: 500,
 		});
 	}

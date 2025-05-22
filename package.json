@@ -19,9 +19,9 @@
 		"eslint": "8.34.0",
 		"eslint-config-next": "13.1.6",
 		"global": "^4.4.0",
-		"next": "^13.1.6",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
+		"next": "^15.1.8",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
 		"typescript": "4.9.5"
 	}
 }
