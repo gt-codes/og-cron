@@ -8,13 +8,12 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/gt-codes/og-cron&project-name=og-cron&repository-name=og-cron&integration-ids=oac_V3R1GIpkoJorr6fqyiwdhl17&envDescription=API%20Keys%20from%20your%20Vercel%20account%20needed%20to%20run%20this%20application.)
 
-
 ## Features
 
 -   Automatic fetching of top stories from Hacker News
 -   **Upstash** as a data store for efficient data storage and retrieval
--   **Vercel OG** for automatic generation of Open Graph (OG) image at the edge
--   Updates to Hacker News data every minute thanks to **Vercel Cron Jobs**
+-   **Vercel OG** for automatic generation of Open Graph (OG) image
+-   Updates Hacker News data every minute thanks to **Vercel Cron Jobs**
 
 ## Usage
 
